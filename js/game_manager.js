@@ -1,8 +1,9 @@
-function GameManager(size, InputManager, Actuator, StorageManager) {
+function GameManager(size, InputManager, Actuator, StorageManager, SoundManager) {
   this.size           = size; // Size of the grid
   this.inputManager   = new InputManager;
   this.storageManager = new StorageManager;
   this.actuator       = new Actuator;
+  this.soundManager   = new SoundManager;
 
   this.startTiles     = 2;
 
@@ -167,6 +168,9 @@ GameManager.prototype.move = function (direction) {
           // Converge the two tiles' positions
           tile.updatePosition(positions.next);
 
+          //play Sound
+          self.playSoundForTile(tile.value);
+
           // Update the score
           self.score += merged.value;
 
@@ -191,6 +195,45 @@ GameManager.prototype.move = function (direction) {
     }
 
     this.actuate();
+  }
+};
+
+GameManager.prototype.playSoundForTile = function(tileNumber) {
+  var self = this;
+  switch(tileNumber) {
+    case 2:
+      self.soundManager.play_sound("sound-tile-2");
+      break;
+    case 4:
+      self.soundManager.play_sound("sound-tile-4");
+      break;
+    case 8:
+      self.soundManager.play_sound("sound-tile-8");
+      break;
+    case 16:
+      self.soundManager.play_sound("sound-tile-16");
+      break;
+    case 32:
+      self.soundManager.play_sound("sound-tile-32");
+      break;
+    case 64:
+      self.soundManager.play_sound("sound-tile-64");
+      break;
+    case 128:
+      self.soundManager.play_sound("sound-tile-128");
+      break;
+    case 256:
+      self.soundManager.play_sound("sound-tile-256");
+      break;
+    case 512:
+      self.soundManager.play_sound("sound-tile-512");
+      break;
+    case 1024:
+      self.soundManager.play_sound("sound-tile-1024");
+      break;
+    case 2048:
+      self.soundManager.play_sound("sound-tile-2048");
+      break;
   }
 };
 

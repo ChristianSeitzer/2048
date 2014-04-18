@@ -4,7 +4,7 @@ function HTMLActuator() {
   this.bestContainer    = document.querySelector(".best-container");
   this.messageContainer = document.querySelector(".game-message");
 
-  this.score = 0;
+  this.c = 0;
 }
 
 HTMLActuator.prototype.actuate = function (grid, metadata) {
